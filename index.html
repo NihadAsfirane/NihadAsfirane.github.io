@@ -220,6 +220,18 @@
     .thumb { display: block; width: 100%; height: 200px; object-fit: cover; object-position: center 65%; border-radius: 14px; margin: 20px 0 0; border: 1px solid var(--line); }
     .thumb.chart { object-fit: contain; background: #fff; padding: 8px; }
     .card.wide .thumb { height: auto; max-height: 260px; margin-top: 22px; }
+    /* BERT card: question-answering example */
+    .qa-demo { margin: 20px 0 0; padding: 18px 20px; border: 1px solid var(--line); border-radius: 14px; background: var(--hover); font-size: 14px; line-height: 1.55; }
+    .qa-demo .qa-label { font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+    .qa-demo .qa-row { display: grid; grid-template-columns: 82px 1fr; gap: 10px; margin-bottom: 8px; }
+    .qa-demo .qa-row b { font-family: var(--display); font-weight: 600; color: var(--a1); font-size: 13px; }
+    .qa-demo .qa-row span { color: var(--soft); }
+    .qa-demo .qa-label mark { text-transform: none; letter-spacing: .5px; }
+    .qa-demo mark { background: rgba(94, 234, 212, .18); color: var(--text); padding: 1px 4px; border-radius: 4px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+    html[data-theme="light"] .qa-demo mark { background: rgba(13, 148, 136, .14); }
+    .qa-stats { display: flex; gap: 26px; flex-wrap: wrap; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); }
+    .qa-stats div { font-size: 12.5px; color: var(--muted); }
+    .qa-stats strong { display: block; font-family: var(--display); font-size: 22px; line-height: 1.2; }
     .caption { font-size: 12.5px; color: var(--muted); margin-top: 6px; }
     .small-link { display: block; margin-top: 16px; font-size: 13.5px; color: var(--muted); }
     .small-link a { color: var(--a1); text-decoration: underline; text-underline-offset: 3px; }
@@ -285,6 +297,9 @@
       .theme-toggle { top: auto; bottom: 18px; right: 16px; width: 44px; height: 44px; }
       .training div { flex-direction: column; gap: 2px; }
       .training span { text-align: left; }
+      .qa-demo .qa-row { grid-template-columns: 1fr; gap: 2px; margin-bottom: 10px; }
+      .qa-stats { gap: 20px; }
+      .qa-stats strong { font-size: 19px; }
     }
 
     /* Respect people who turn animations off on their device */
@@ -429,6 +444,16 @@
 
         <article class="card tilt reveal">
           <div class="idx"><b>03 · NLP · Healthcare</b><span>2026</span></div>
+          <div class="qa-demo">
+            <div class="qa-label">Example from the dataset</div>
+            <div class="qa-row"><b>Question</b><span>What is a Stage II pressure ulcer?</span></div>
+            <div class="qa-row"><b>Answer in context</b><span>…Stage I pressure ulcers are characterised by non-blanchable redness of intact skin. Stage II involves <mark>partial-thickness skin loss, presenting as a shallow open ulcer or blister</mark>…</span></div>
+            <div class="qa-stats">
+              <div><strong class="grad">50.1%</strong>Exact Match</div>
+              <div><strong class="grad">50.8%</strong>F1 score</div>
+              <div><strong class="grad">473</strong>test questions</div>
+            </div>
+          </div>
           <h3>BERT Question-Answering System for Pressure Ulcer Care</h3>
           <p>
             DistilBERT fine-tuned on a custom SQuAD v2-style clinical question-answering dataset of 4,727 questions,
